@@ -1,0 +1,5 @@
+com\luos\mapper\UserMapper.class
+com\luos\entity\User.class
+com\luos\service\UserService.class
+com\luos\controller\UserController.class
+UserApplication.class
