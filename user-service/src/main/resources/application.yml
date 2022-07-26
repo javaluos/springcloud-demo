@@ -1,8 +1,6 @@
 server:
   port: 8082
 spring:
-  application:
-    name: userservice
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost/cloud-user?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&allowMultiQueries=true
@@ -13,10 +11,6 @@ spring:
 #  client:
 #    service-url:
 #      defaultZone: http://127.0.0.1:10086/eureka/
-  cloud:
-    nacos:
-      server-addr: localhost:8848
-
 
 logging:
   level:

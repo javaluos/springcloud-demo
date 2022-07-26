@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
  **/
 @SpringBootApplication
 @MapperScan("com.luos.mapper")
+@EnableFeignClients(basePackages = "com.luos.feign.client")
 public class OrderApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

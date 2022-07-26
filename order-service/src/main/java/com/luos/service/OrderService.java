@@ -1,11 +1,10 @@
 package com.luos.service;
 
 import com.luos.entity.Order;
-import com.luos.entity.User;
+import com.luos.feign.client.UserClient;
+import com.luos.feign.entity.User;
 import com.luos.mapper.OrderMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @author luosong@agree.com.cn
@@ -14,18 +13,28 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class OrderService {
 
-    @Autowired
-    private OrderMapper orderMapper;
+    private final OrderMapper orderMapper;
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final UserClient userClient;
+
+    public OrderService(OrderMapper orderMapper, UserClient userClient) {
+        this.orderMapper = orderMapper;
+        this.userClient = userClient;
+    }
 
     public Order queryById(Long id) {
+        Order order = orderMapper.findById(id);
+        User user = userClient.findById(order.getUserId());
+        order.setUser(user);
+        return order;
+    }
+
+    /*public Order queryById(Long id) {
         Order order = orderMapper.findById(id);
         String url = "http://userservice/user/" + order.getUserId();
         User user = restTemplate.getForObject(url, User.class);
         order.setUser(user);
         return order;
-    }
+    }*/
 
 }

@@ -1,4 +1,4 @@
-package com.luos.entity;
+package com.luos.feign.entity;
 
 /**
  * @author luosong@agree.com.cn

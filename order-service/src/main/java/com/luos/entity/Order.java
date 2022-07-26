@@ -1,5 +1,7 @@
 package com.luos.entity;
 
+import com.luos.feign.entity.User;
+
 /**
  * @author luosong@agree.com.cn
  * @since 2022/7/8
