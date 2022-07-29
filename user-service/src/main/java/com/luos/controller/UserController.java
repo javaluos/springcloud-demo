@@ -6,10 +6,7 @@ import com.luos.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -39,7 +36,9 @@ public class UserController {
     }
 
     @GetMapping(value = "/{id}")
-    public User queryById(@PathVariable(value = "id") Long id) {
+    public User queryById(@PathVariable(value = "id") Long id,
+                          @RequestHeader(value = "desc", required = false) String desc) {
+        System.out.println(desc);
         return userService.queryById(id);
     }
 
